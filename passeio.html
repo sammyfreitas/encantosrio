@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passeios - Encantos Rio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="verificarLogin(); listarPasseios()">
+  <header class="topo-interno">
+    <h1>Cadastro de Passeios</h1>
+    <nav class="menu">
+      <a href="admin.html">Painel</a>
+      <a href="cliente.html">Clientes</a>
+      <a href="passeio.html">Passeios</a>
+      <a href="venda.html">Vendas</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="bloco">
+      <h2>Novo Passeio</h2>
+
+      <div class="form-grid">
+        <input type="hidden" id="passeioId">
+
+        <div>
+          <label for="nomePasseio">Nome do Passeio</label>
+          <input type="text" id="nomePasseio">
+        </div>
+
+        <div>
+          <label for="descricaoPasseio">Descrição</label>
+          <input type="text" id="descricaoPasseio">
+        </div>
+
+        <div>
+          <label for="localPasseio">Local do Passeio</label>
+          <input type="text" id="localPasseio">
+        </div>
+
+        <div>
+          <label for="cidadePasseio">Cidade</label>
+          <input type="text" id="cidadePasseio">
+        </div>
+
+        <div>
+          <label for="tipoPasseio">Tipo</label>
+          <input type="text" id="tipoPasseio">
+        </div>
+
+        <div>
+          <label for="guiaPasseio">Guia</label>
+          <input type="text" id="guiaPasseio">
+        </div>
+
+        <div>
+          <label for="dataInicioPasseio">Data Início</label>
+          <input type="date" id="dataInicioPasseio">
+        </div>
+
+        <div>
+          <label for="dataFimPasseio">Data Fim</label>
+          <input type="date" id="dataFimPasseio">
+        </div>
+
+        <div>
+          <label for="horarioInicioPasseio">Horário Início</label>
+          <input type="time" id="horarioInicioPasseio">
+        </div>
+
+        <div>
+          <label for="horarioFimPasseio">Horário Fim</label>
+          <input type="time" id="horarioFimPasseio">
+        </div>
+
+        <div>
+          <label for="precoAdultoPasseio">Preço Adulto</label>
+          <input type="number" step="0.01" id="precoAdultoPasseio">
+        </div>
+
+        <div>
+          <label for="precoCriancaPasseio">Preço Criança</label>
+          <input type="number" step="0.01" id="precoCriancaPasseio">
+        </div>
+
+        <div>
+          <label for="destaquePasseio">Destaque</label>
+          <select id="destaquePasseio">
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="acoes">
+        <button onclick="salvarPasseio()">Salvar</button>
+        <button class="secundario" onclick="limparFormularioPasseio()">Limpar</button>
+      </div>
+
+      <p id="mensagemPasseio" class="mensagem"></p>
+    </section>
+
+    <section class="bloco">
+      <h2>Buscar Passeio</h2>
+
+      <div class="busca-area">
+        <div>
+          <label for="buscarPasseioId">Buscar por ID</label>
+          <input type="number" id="buscarPasseioId">
+          <button onclick="buscarPasseioPorId()">Buscar ID</button>
+        </div>
+
+        <div>
+          <label for="buscarPasseioNome">Buscar por Nome</label>
+          <input type="text" id="buscarPasseioNome">
+          <button onclick="buscarPasseioPorNome()">Buscar Nome</button>
+        </div>
+
+        <div>
+          <button class="secundario" onclick="listarPasseios()">Listar Todos</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>Lista de Passeios</h2>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Cidade</th>
+              <th>Tipo</th>
+              <th>Guia</th>
+              <th>Preço Adulto</th>
+              <th>Destaque</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaPasseios"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

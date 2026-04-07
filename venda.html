@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas - Encantos Rio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="verificarLogin(); listarVendas()">
+  <header class="topo-interno">
+    <h1>Cadastro de Vendas</h1>
+    <nav class="menu">
+      <a href="admin.html">Painel</a>
+      <a href="cliente.html">Clientes</a>
+      <a href="passeio.html">Passeios</a>
+      <a href="venda.html">Vendas</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </nav>
+  </header>
+
+    <main class="container pagina">
+        <section class="form-section">
+            <h2>Nova Venda</h2>
+
+            <form id="formVenda">
+                <div class="grid-form">
+                    <div>
+                        <label for="dataVenda">Data da Venda</label>
+                        <input type="date" id="dataVenda" required>
+                    </div>
+
+                    <div>
+                        <label for="quantidadeVenda">Quantidade</label>
+                        <input type="number" id="quantidadeVenda" min="1" required>
+                    </div>
+
+                    <div>
+                        <label for="tipoIngressoVenda">Tipo de Ingresso</label>
+                        <select id="tipoIngressoVenda" required>
+                            <option value="ADULTO">ADULTO</option>
+                            <option value="CRIANCA">CRIANCA</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="valorTotalVenda">Valor Total</label>
+                        <input type="number" step="0.01" id="valorTotalVenda" required>
+                    </div>
+
+                    <div>
+                        <label for="statusPagamentoVenda">Status Pagamento</label>
+                        <select id="statusPagamentoVenda" required>
+                            <option value="PENDENTE">PENDENTE</option>
+                            <option value="PARCIAL">PARCIAL</option>
+                            <option value="PAGO">PAGO</option>
+                            <option value="CANCELADO">CANCELADO</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="idClienteVenda">ID do Cliente</label>
+                        <input type="number" id="idClienteVenda" required>
+                    </div>
+
+                    <div>
+                        <label for="idPasseioVenda">ID do Passeio</label>
+                        <input type="number" id="idPasseioVenda" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Cadastrar Venda</button>
+            </form>
+
+            <p id="mensagemVenda" class="mensagem"></p>
+        </section>
+
+        <section class="busca-section">
+            <h2>Buscar Venda</h2>
+
+            <div class="barra-busca">
+                <input type="number" id="buscarIdVenda" placeholder="Buscar por ID">
+                <button class="btn" onclick="buscarVendaPorId()">Buscar ID</button>
+            </div>
+
+            <div class="barra-busca">
+                <input type="text" id="buscarStatusVenda" placeholder="Buscar por status">
+                <button class="btn" onclick="buscarVendaPorStatus()">Buscar Status</button>
+            </div>
+
+            <div class="barra-busca">
+                <button class="btn" onclick="listarVendas()">Listar Todas</button>
+            </div>
+        </section>
+
+        <section class="tabela-section">
+            <h2>Lista de Vendas</h2>
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Qtd</th>
+                            <th>Tipo</th>
+                            <th>Valor Total</th>
+                            <th>Status</th>
+                            <th>ID Cliente</th>
+                            <th>ID Passeio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaVendas"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

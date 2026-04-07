@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo - Encantos Rio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body onload="verificarLogin()">
+
+  <header class="barra-topo">
+    <div class="container barra-topo-conteudo">
+      <div class="topo-esquerda">
+        <span><i class="fa-solid fa-envelope"></i> elisangelafrrio@gmail.com</span>
+        <span><i class="fa-brands fa-whatsapp"></i> +55 (21) 99863-6323</span>
+      </div>
+
+      <div class="topo-direita">
+        <a href="https://api.whatsapp.com/send?phone=5521998636323" target="_blank" class="icone-social whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/encantosrio/" target="_blank" class="icone-social instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/encantosrio/" target="_blank" class="icone-social facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/@encantosrio" target="_blank" class="icone-social youtube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <header class="cabecalho-site">
+    <div class="container cabecalho-conteudo">
+      <div class="logo-nome">
+        <img src="img/logo.png" alt="Logo Encantos Rio" class="logo">
+        <h1>Encantos Rio</h1>
+      </div>
+
+      <nav class="menu-principal">
+        <a href="index.html">Site</a>
+        <a href="cliente.html">Clientes</a>
+        <a href="passeio.html">Passeios</a>
+        <a href="venda.html">Vendas</a>
+        <a href="#" class="btn-admin-link" onclick="logout()">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="banner-imagem banner-menor">
+    <img src="img/banner-rio.jpg" alt="Painel Administrativo">
+  </section>
+
+  <main class="secao secao-clara">
+    <div class="container">
+      <div class="titulo-admin">
+        <h2>Painel Administrativo</h2>
+        <p>Acesse os módulos de cadastro do sistema.</p>
+      </div>
+
+      <div class="cards-home cards-admin">
+        <div class="card-home">
+          <img src="img/admin/clientes.jpg" alt="Clientes" class="card-img">
+          <h3>Clientes</h3>
+          <p>Cadastro, listagem, busca, edição e exclusão de clientes do sistema.</p>
+          <a href="cliente.html" class="botao-link">Acessar módulo</a>
+        </div>
+
+        <div class="card-home">
+          <img src="img/admin/passeios.jpg" alt="Passeios" class="card-img">
+          <h3>Passeios</h3>
+          <p>Gerencie os passeios, organize dados e mantenha o catálogo sempre atualizado.</p>
+          <a href="passeio.html" class="botao-link">Acessar módulo</a>
+        </div>
+
+        <div class="card-home">
+          <img src="img/admin/vendas.jpg" alt="Vendas" class="card-img">
+          <h3>Vendas</h3>
+          <p>Controle as vendas, acompanhe status de pagamento e consulte registros.</p>
+          <a href="venda.html" class="botao-link">Acessar módulo</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <p>Turismo - Encantos Rio - 2026 Todos os direitos Reservados</p>
+    <p>Projeto Final do Curso de Programador BackEnd desenvolvido por Elisangela sob orientação do Prof. Anthony Freitas</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
