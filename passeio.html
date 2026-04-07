@@ -5,146 +5,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passeios - Encantos Rio</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body onload="verificarLogin(); listarPasseios()">
-  <header class="topo-interno">
-    <h1>Cadastro de Passeios</h1>
-    <nav class="menu">
-      <a href="admin.html">Painel</a>
-      <a href="cliente.html">Clientes</a>
-      <a href="passeio.html">Passeios</a>
-      <a href="venda.html">Vendas</a>
-      <a href="#" onclick="logout()">Sair</a>
-    </nav>
+
+  <header class="barra-topo">
+    <div class="container barra-topo-conteudo">
+      <div class="topo-esquerda">
+        <span><i class="fa-solid fa-envelope"></i> elisangelafrrio@gmail.com</span>
+        <span><i class="fa-brands fa-whatsapp"></i> +55 (21) 99863-6323</span>
+      </div>
+
+      <div class="topo-direita">
+        <a href="https://api.whatsapp.com/send?phone=5521998636323" target="_blank" class="icone-social whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/encantosrio/" target="_blank" class="icone-social instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/encantosrio/" target="_blank" class="icone-social facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/@encantosrio" target="_blank" class="icone-social youtube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <section class="bloco">
-      <h2>Novo Passeio</h2>
-
-      <div class="form-grid">
-        <input type="hidden" id="passeioId">
-
-        <div>
-          <label for="nomePasseio">Nome do Passeio</label>
-          <input type="text" id="nomePasseio">
-        </div>
-
-        <div>
-          <label for="descricaoPasseio">Descrição</label>
-          <input type="text" id="descricaoPasseio">
-        </div>
-
-        <div>
-          <label for="localPasseio">Local do Passeio</label>
-          <input type="text" id="localPasseio">
-        </div>
-
-        <div>
-          <label for="cidadePasseio">Cidade</label>
-          <input type="text" id="cidadePasseio">
-        </div>
-
-        <div>
-          <label for="tipoPasseio">Tipo</label>
-          <input type="text" id="tipoPasseio">
-        </div>
-
-        <div>
-          <label for="guiaPasseio">Guia</label>
-          <input type="text" id="guiaPasseio">
-        </div>
-
-        <div>
-          <label for="dataInicioPasseio">Data Início</label>
-          <input type="date" id="dataInicioPasseio">
-        </div>
-
-        <div>
-          <label for="dataFimPasseio">Data Fim</label>
-          <input type="date" id="dataFimPasseio">
-        </div>
-
-        <div>
-          <label for="horarioInicioPasseio">Horário Início</label>
-          <input type="time" id="horarioInicioPasseio">
-        </div>
-
-        <div>
-          <label for="horarioFimPasseio">Horário Fim</label>
-          <input type="time" id="horarioFimPasseio">
-        </div>
-
-        <div>
-          <label for="precoAdultoPasseio">Preço Adulto</label>
-          <input type="number" step="0.01" id="precoAdultoPasseio">
-        </div>
-
-        <div>
-          <label for="precoCriancaPasseio">Preço Criança</label>
-          <input type="number" step="0.01" id="precoCriancaPasseio">
-        </div>
-
-        <div>
-          <label for="destaquePasseio">Destaque</label>
-          <select id="destaquePasseio">
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
-          </select>
-        </div>
+  <header class="cabecalho-site">
+    <div class="container cabecalho-conteudo">
+      <div class="logo-nome">
+        <img src="img/logo.png" alt="Logo Encantos Rio" class="logo">
+        <h1>Encantos Rio</h1>
       </div>
 
-      <div class="acoes">
-        <button onclick="salvarPasseio()">Salvar</button>
-        <button class="secundario" onclick="limparFormularioPasseio()">Limpar</button>
+      <nav class="menu-principal">
+        <a href="admin.html">Painel</a>
+        <a href="cliente.html">Clientes</a>
+        <a href="passeio.html">Passeios</a>
+        <a href="venda.html">Vendas</a>
+        <a href="#" class="btn-admin-link" onclick="logout()">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="banner-imagem banner-menor">
+    <img src="img/banner-rio.jpg" alt="Passeios Encantos Rio">
+  </section>
+
+  <main class="secao secao-clara">
+    <div class="container">
+
+      <div class="titulo-admin">
+        <h2>Cadastro de Passeios</h2>
+        <p>Gerencie os passeios turísticos da Encantos Rio.</p>
       </div>
 
-      <p id="mensagemPasseio" class="mensagem"></p>
-    </section>
-
-    <section class="bloco">
-      <h2>Buscar Passeio</h2>
-
-      <div class="busca-area">
-        <div>
-          <label for="buscarPasseioId">Buscar por ID</label>
-          <input type="number" id="buscarPasseioId">
-          <button onclick="buscarPasseioPorId()">Buscar ID</button>
+      <section class="card-admin-central">
+        <div class="card-admin-topo">
+          <h2>Novo Passeio</h2>
+          <p>Preencha os dados do passeio abaixo.</p>
         </div>
 
-        <div>
-          <label for="buscarPasseioNome">Buscar por Nome</label>
-          <input type="text" id="buscarPasseioNome">
-          <button onclick="buscarPasseioPorNome()">Buscar Nome</button>
+        <div class="card-admin-form">
+          <input type="hidden" id="passeioId">
+
+          <div class="form-grid-2">
+            <div class="campo-form">
+              <label for="nomePasseio">Nome do Passeio</label>
+              <input type="text" id="nomePasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="tipoPasseio">Tipo</label>
+              <input type="text" id="tipoPasseio">
+            </div>
+
+            <div class="campo-form full">
+              <label for="descricaoPasseio">Descrição</label>
+              <input type="text" id="descricaoPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="localPasseio">Local do Passeio</label>
+              <input type="text" id="localPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="cidadePasseio">Cidade</label>
+              <input type="text" id="cidadePasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="guiaPasseio">Guia</label>
+              <input type="text" id="guiaPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="dataInicioPasseio">Data Início</label>
+              <input type="date" id="dataInicioPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="dataFimPasseio">Data Fim</label>
+              <input type="date" id="dataFimPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="horarioInicioPasseio">Horário Início</label>
+              <input type="time" id="horarioInicioPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="horarioFimPasseio">Horário Fim</label>
+              <input type="time" id="horarioFimPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="precoAdultoPasseio">Preço Adulto</label>
+              <input type="number" step="0.01" id="precoAdultoPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="precoCriancaPasseio">Preço Criança</label>
+              <input type="number" step="0.01" id="precoCriancaPasseio">
+            </div>
+
+            <div class="campo-form">
+              <label for="destaquePasseio">Destaque</label>
+              <select id="destaquePasseio">
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="acoes-login">
+            <button type="button" class="btn-padrao" onclick="salvarPasseio()">Salvar</button>
+            <button type="button" class="btn-padrao btn-secundario" onclick="limparFormularioPasseio()">Limpar</button>
+          </div>
+
+          <p id="mensagemPasseio" class="mensagem mensagem-centralizada"></p>
+        </div>
+      </section>
+
+      <section class="card-admin-central espacamento-topo">
+        <div class="card-admin-topo">
+          <h2>Buscar Passeio</h2>
+          <p>Pesquise por ID ou por nome.</p>
         </div>
 
-        <div>
-          <button class="secundario" onclick="listarPasseios()">Listar Todos</button>
-        </div>
-      </div>
-    </section>
+        <div class="card-admin-form">
+          <div class="form-grid-2">
+            <div class="campo-form">
+              <label for="buscarPasseioId">Buscar por ID</label>
+              <input type="number" id="buscarPasseioId">
+            </div>
 
-    <section class="bloco">
-      <h2>Lista de Passeios</h2>
-      <div class="tabela-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Cidade</th>
-              <th>Tipo</th>
-              <th>Guia</th>
-              <th>Preço Adulto</th>
-              <th>Destaque</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tabelaPasseios"></tbody>
-        </table>
-      </div>
-    </section>
+            <div class="campo-form">
+              <label for="buscarPasseioNome">Buscar por Nome</label>
+              <input type="text" id="buscarPasseioNome">
+            </div>
+          </div>
+
+          <div class="acoes-login">
+            <button type="button" class="btn-padrao" onclick="buscarPasseioPorId()">Buscar ID</button>
+            <button type="button" class="btn-padrao" onclick="buscarPasseioPorNome()">Buscar Nome</button>
+            <button type="button" class="btn-padrao btn-secundario" onclick="listarPasseios()">Listar Todos</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-admin-central espacamento-topo">
+        <div class="card-admin-topo">
+          <h2>Lista de Passeios</h2>
+          <p>Consulte, edite ou exclua os registros cadastrados.</p>
+        </div>
+
+        <div class="card-admin-form">
+          <div class="tabela-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Cidade</th>
+                  <th>Tipo</th>
+                  <th>Guia</th>
+                  <th>Preço Adulto</th>
+                  <th>Destaque</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaPasseios"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </main>
+
+  <footer class="rodape">
+    <p>Turismo - Encantos Rio - 2026 Todos os direitos Reservados</p>
+    <p>Projeto Final do Curso de Programador BackEnd desenvolvido por Elisangela sob orientação do Prof. Anthony Freitas</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

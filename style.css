@@ -252,6 +252,7 @@ tr:nth-child(even) {
         text-align: center;
     }
 
+
     .logo {
         width: 90px;
         height: 90px;
@@ -754,4 +755,150 @@ tr:nth-child(even) {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-form label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #0b6977;
+}
+
+.campo-form input,
+.campo-form select {
+  padding: 11px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.campo-form input:focus,
+.campo-form select:focus {
+  border-color: #0cc0df;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(12, 192, 223, 0.15);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.btn-padrao {
+  display: inline-block;
+  background: #0cc0df;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btn-padrao:hover {
+  background: #0999b2;
+}
+
+.btn-secundario {
+  background: #666;
+}
+
+.btn-secundario:hover {
+  background: #4d4d4d;
+}
+
+.acoes-login {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.espacamento-topo {
+  margin-top: 28px;
+}
+
+.mensagem-centralizada {
+  text-align: center;
+}
+
+
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: white;
+  padding-bottom: 6px;
+}
+
+.tabela-wrapper table {
+  width: 100%;
+  min-width: 1000px;
+}
+
+.tabela-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.tabela-wrapper::-webkit-scrollbar-track {
+  background: #dfeff2;
+  border-radius: 10px;
+}
+
+.tabela-wrapper::-webkit-scrollbar-thumb {
+  background: #0cc0df;
+  border-radius: 10px;
+}
+
+.tabela-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #0999b2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #0cc0df;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #f4fcfd;
+}
+
+.card-admin-central {
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1300px;
+  }
 }
