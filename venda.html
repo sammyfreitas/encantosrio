@@ -1,119 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendas - Encantos Rio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Vendas - Encantos Rio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body onload="verificarLogin(); listarVendas()">
-  <header class="topo-interno">
-    <h1>Cadastro de Vendas</h1>
-    <nav class="menu">
+
+<header class="cabecalho-site">
+  <div class="container cabecalho-conteudo">
+    <div class="logo-nome">
+      <img src="img/logo.png" class="logo">
+      <h1>Encantos Rio</h1>
+    </div>
+
+    <nav class="menu-principal">
       <a href="admin.html">Painel</a>
       <a href="cliente.html">Clientes</a>
       <a href="passeio.html">Passeios</a>
       <a href="venda.html">Vendas</a>
-      <a href="#" onclick="logout()">Sair</a>
+      <a href="#" class="btn-admin-link" onclick="logout()">Sair</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-    <main class="container pagina">
-        <section class="form-section">
-            <h2>Nova Venda</h2>
+<section class="secao secao-clara">
+  <div class="container">
 
-            <form id="formVenda">
-                <div class="grid-form">
-                    <div>
-                        <label for="dataVenda">Data da Venda</label>
-                        <input type="date" id="dataVenda" required>
-                    </div>
+    <div class="card-admin-central">
+      <div class="card-admin-topo">
+        <h2>Cadastro de Vendas</h2>
+      </div>
 
-                    <div>
-                        <label for="quantidadeVenda">Quantidade</label>
-                        <input type="number" id="quantidadeVenda" min="1" required>
-                    </div>
+      <div class="card-admin-form">
 
-                    <div>
-                        <label for="tipoIngressoVenda">Tipo de Ingresso</label>
-                        <select id="tipoIngressoVenda" required>
-                            <option value="ADULTO">ADULTO</option>
-                            <option value="CRIANCA">CRIANCA</option>
-                        </select>
-                    </div>
+        <div class="form-grid-2">
+          <div class="campo-form">
+            <label>ID Cliente</label>
+            <input type="number" id="clienteVenda">
+          </div>
 
-                    <div>
-                        <label for="valorTotalVenda">Valor Total</label>
-                        <input type="number" step="0.01" id="valorTotalVenda" required>
-                    </div>
+          <div class="campo-form">
+            <label>ID Passeio</label>
+            <input type="number" id="passeioVenda">
+          </div>
 
-                    <div>
-                        <label for="statusPagamentoVenda">Status Pagamento</label>
-                        <select id="statusPagamentoVenda" required>
-                            <option value="PENDENTE">PENDENTE</option>
-                            <option value="PARCIAL">PARCIAL</option>
-                            <option value="PAGO">PAGO</option>
-                            <option value="CANCELADO">CANCELADO</option>
-                        </select>
-                    </div>
+          <div class="campo-form">
+            <label>Quantidade</label>
+            <input type="number" id="quantidadeVenda">
+          </div>
 
-                    <div>
-                        <label for="idClienteVenda">ID do Cliente</label>
-                        <input type="number" id="idClienteVenda" required>
-                    </div>
+          <div class="campo-form">
+            <label>Tipo Ingresso</label>
+            <select id="tipoIngressoVenda">
+              <option>ADULTO</option>
+              <option>CRIANCA</option>
+            </select>
+          </div>
 
-                    <div>
-                        <label for="idPasseioVenda">ID do Passeio</label>
-                        <input type="number" id="idPasseioVenda" required>
-                    </div>
-                </div>
+          <div class="campo-form">
+            <label>Valor Total</label>
+            <input type="number" id="valorVenda">
+          </div>
 
-                <button type="submit" class="btn">Cadastrar Venda</button>
-            </form>
+          <div class="campo-form">
+            <label>Status</label>
+            <select id="statusVenda">
+              <option>PAGO</option>
+              <option>PENDENTE</option>
+              <option>PARCIAL</option>
+              <option>CANCELADO</option>
+            </select>
+          </div>
+        </div>
 
-            <p id="mensagemVenda" class="mensagem"></p>
-        </section>
+        <div class="acoes-login">
+          <button class="btn-padrao" onclick="salvarVenda()">Salvar</button>
+        </div>
 
-        <section class="busca-section">
-            <h2>Buscar Venda</h2>
+      </div>
+    </div>
 
-            <div class="barra-busca">
-                <input type="number" id="buscarIdVenda" placeholder="Buscar por ID">
-                <button class="btn" onclick="buscarVendaPorId()">Buscar ID</button>
-            </div>
+    <div class="card-admin-central espacamento-topo">
+      <div class="card-admin-topo">
+        <h2>Lista de Vendas</h2>
+      </div>
 
-            <div class="barra-busca">
-                <input type="text" id="buscarStatusVenda" placeholder="Buscar por status">
-                <button class="btn" onclick="buscarVendaPorStatus()">Buscar Status</button>
-            </div>
+      <div class="card-admin-form">
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Passeio</th>
+                <th>Qtd</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaVendas"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-            <div class="barra-busca">
-                <button class="btn" onclick="listarVendas()">Listar Todas</button>
-            </div>
-        </section>
+  </div>
+</section>
 
-        <section class="tabela-section">
-            <h2>Lista de Vendas</h2>
-            <div class="tabela-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Data</th>
-                            <th>Qtd</th>
-                            <th>Tipo</th>
-                            <th>Valor Total</th>
-                            <th>Status</th>
-                            <th>ID Cliente</th>
-                            <th>ID Passeio</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabelaVendas"></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

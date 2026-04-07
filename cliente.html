@@ -1,119 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes - Encantos Rio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Clientes - Encantos Rio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body onload="verificarLogin(); listarClientes()">
-  <header class="topo-interno">
-    <h1>Cadastro de Clientes</h1>
-    <nav class="menu">
+
+<header class="cabecalho-site">
+  <div class="container cabecalho-conteudo">
+    <div class="logo-nome">
+      <img src="img/logo.png" class="logo">
+      <h1>Encantos Rio</h1>
+    </div>
+
+    <nav class="menu-principal">
       <a href="admin.html">Painel</a>
       <a href="cliente.html">Clientes</a>
       <a href="passeio.html">Passeios</a>
       <a href="venda.html">Vendas</a>
-      <a href="#" onclick="logout()">Sair</a>
+      <a href="#" class="btn-admin-link" onclick="logout()">Sair</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-    <main class="container pagina">
-        <section class="form-section">
-            <h2>Novo Cliente</h2>
+<section class="secao secao-clara">
+  <div class="container">
 
-            <form id="formCliente">
-                <div class="grid-form">
-                    <div>
-                        <label for="nomeCliente">Nome</label>
-                        <input type="text" id="nomeCliente" required>
-                    </div>
+    <div class="card-admin-central">
+      <div class="card-admin-topo">
+        <h2>Cadastro de Clientes</h2>
+      </div>
 
-                    <div>
-                        <label for="cpfCliente">CPF</label>
-                        <input type="text" id="cpfCliente" required>
-                    </div>
+      <div class="card-admin-form">
+        <input type="hidden" id="clienteId">
 
-                    <div>
-                        <label for="dataNascimentoCliente">Data de Nascimento</label>
-                        <input type="date" id="dataNascimentoCliente">
-                    </div>
+        <div class="form-grid-2">
+          <div class="campo-form">
+            <label>Nome</label>
+            <input type="text" id="nomeCliente">
+          </div>
 
-                    <div>
-                        <label for="idiomaCliente">Idioma</label>
-                        <input type="text" id="idiomaCliente">
-                    </div>
+          <div class="campo-form">
+            <label>CPF</label>
+            <input type="text" id="cpfCliente">
+          </div>
 
-                    <div>
-                        <label for="enderecoCliente">Endereço</label>
-                        <input type="text" id="enderecoCliente">
-                    </div>
+          <div class="campo-form">
+            <label>Data Nascimento</label>
+            <input type="date" id="dataNascimentoCliente">
+          </div>
 
-                    <div>
-                        <label for="bairroCliente">Bairro</label>
-                        <input type="text" id="bairroCliente">
-                    </div>
+          <div class="campo-form">
+            <label>Telefone</label>
+            <input type="text" id="telefoneCliente">
+          </div>
 
-                    <div>
-                        <label for="cidadeCliente">Cidade</label>
-                        <input type="text" id="cidadeCliente">
-                    </div>
+          <div class="campo-form">
+            <label>Email</label>
+            <input type="email" id="emailCliente">
+          </div>
 
-                    <div>
-                        <label for="telefoneCliente">Telefone</label>
-                        <input type="text" id="telefoneCliente">
-                    </div>
+          <div class="campo-form">
+            <label>Cidade</label>
+            <input type="text" id="cidadeCliente">
+          </div>
+        </div>
 
-                    <div>
-                        <label for="emailCliente">Email</label>
-                        <input type="email" id="emailCliente">
-                    </div>
-                </div>
+        <div class="acoes-login">
+          <button class="btn-padrao" onclick="salvarCliente()">Salvar</button>
+          <button class="btn-padrao btn-secundario" onclick="limparFormularioCliente()">Limpar</button>
+        </div>
 
-                <button type="submit" class="btn">Cadastrar Cliente</button>
-            </form>
+        <p id="mensagemCliente" class="mensagem mensagem-centralizada"></p>
+      </div>
+    </div>
 
-            <p id="mensagemCliente" class="mensagem"></p>
-        </section>
+    <div class="card-admin-central espacamento-topo">
+      <div class="card-admin-topo">
+        <h2>Lista de Clientes</h2>
+      </div>
 
-        <section class="busca-section">
-            <h2>Buscar Cliente</h2>
+      <div class="card-admin-form">
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Cidade</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaClientes"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-            <div class="barra-busca">
-                <input type="number" id="buscarIdCliente" placeholder="Buscar por ID">
-                <button class="btn" onclick="buscarClientePorId()">Buscar ID</button>
-            </div>
+  </div>
+</section>
 
-            <div class="barra-busca">
-                <input type="text" id="buscarNomeCliente" placeholder="Buscar por nome">
-                <button class="btn" onclick="buscarClientePorNome()">Buscar Nome</button>
-            </div>
-
-            <div class="barra-busca">
-                <button class="btn" onclick="listarClientes()">Listar Todos</button>
-            </div>
-        </section>
-
-        <section class="tabela-section">
-            <h2>Lista de Clientes</h2>
-            <div class="tabela-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Cidade</th>
-                            <th>Telefone</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabelaClientes"></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
