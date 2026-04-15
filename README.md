@@ -56,22 +56,22 @@ https://sammyfreitas.github.io/encantosrio/
 
 ## ⚙️ Estrutura do Projeto
 
-backend/
-├── controller/
-├── model/
-├── repository/
-└── application.properties
-
-frontend/
-├── index.html
-├── login.html
-├── admin.html
-├── cliente.html
-├── passeio.html
-├── venda.html
-├── style.css
-└── script.js
-
+backend/  
+├── controller/  
+├── model/  
+├── repository/  
+└── application.properties  
+  
+frontend/  
+├── index.html  
+├── login.html  
+├── admin.html  
+├── cliente.html  
+├── passeio.html  
+├── venda.html  
+├── style.css  
+└── script.js  
+  
 ---
 
 ## 🔐 Área Administrativa
